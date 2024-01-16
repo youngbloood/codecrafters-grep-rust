@@ -3,6 +3,14 @@ use std::io;
 use std::process;
 
 fn match_pattern(input_line: &str, pattern: &str) -> bool {
+    if pattern.eq("\\d") {
+        let digital = input_line.parse::<i128>();
+        if digital.is_err() {
+            return false;
+        }
+        return true;
+    }
+
     if pattern.chars().count() == 1 {
         return input_line.contains(pattern);
     } else {
